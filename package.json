@@ -1,0 +1,26 @@
+{
+  "name": "swarm",
+  "version": "0.0.1",
+  "description": "playing around with swarm behaviors",
+  "main": "index.html",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sethflowers/swarm.git"
+  },
+  "author": "Seth Flowers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sethflowers/swarm/issues"
+  },
+  "homepage": "https://github.com/sethflowers/swarm#readme"
+}
