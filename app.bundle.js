@@ -96,7 +96,7 @@
 	  _createClass(App, [{
 	    key: 'step',
 	    value: function step() {
-	      this.context.fillStyle = Math.random() > .5 ? 'red' : 'black';
+	      this.context.fillStyle = Math.random() > .5 ? 'black' : 'white';
 	      this.context.fillRect(0, 0, this.width, this.height);
 	    }
 	  }, {
