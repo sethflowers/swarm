@@ -2,10 +2,11 @@ import App from './App';
 
 document.addEventListener('DOMContentLoaded', () => {
   let canvas = document.getElementById('screen');
-  let context = canvas.getContext('2d');  
-  let runner = new App(canvas, context);
-
-  runner.setSize(document.body.clientWidth, document.body.clientHeight);
+  let context = canvas.getContext('2d');
+  let width = document.body.clientWidth;
+  let height = document.body.clientHeight;
+  let swarmSize = 100;
+  let runner = new App(canvas, context, width, height, swarmSize);
   
   let pump = () => {
     runner.step();
