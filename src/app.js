@@ -9,14 +9,18 @@ class App {
   }
 
   step() {
+    this.swarm.step();
+
     this.context.fillStyle = 'white';
     this.context.fillRect(0, 0, this.width, this.height);
     this.context.fillStyle = 'black';
 
+    let bugSize = 4;
+
     this.swarm.bugs.forEach((bug) => {
       let x = bug.x * this.width;
       let y = bug.y * this.height;
-      this.context.fillRect(x, y, 10, 10);
+      this.context.fillRect(x, y, bugSize, bugSize);
     });
   }
 

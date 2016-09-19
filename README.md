@@ -1,4 +1,4 @@
-Playing around with swarms (not yet swarming)... work in progress.
+Playing around with swarms.
 
 ##Installation
 ```
