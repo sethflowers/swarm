@@ -33,23 +33,28 @@ class Bug {
   }
 
   step() {
-    if(Math.random() < .01) {
+    if (Math.random() < .1) {
       this.findLeader();
     }
 
-    let delta = .001;
+    let delta = .00005;
     this.deltaX += this.x < this.leader.x ? delta : -delta;
     this.deltaY += this.y < this.leader.y ? delta : -delta;
 
-    let maxDelta = .01;
+    let maxDelta = .003;
     this.deltaX = Math.min(maxDelta, Math.max(this.deltaX, -maxDelta));
     this.deltaY = Math.min(maxDelta, Math.max(this.deltaY, -maxDelta));
     
     this.x += this.deltaX;
     this.y += this.deltaY;
 
-    this.x = this.x < 1 ? this.x : -this.x;
-    this.y = this.y < 1 ? this.y : -this.y;
+    if (this.x > 1 || this.x < 0) {
+      this.deltaX = -this.deltaX;
+    }
+    
+    if (this.y > 1 || this.y < 0) {
+      this.deltaY = -this.deltaY;
+    }
   }
 
   distanceToSquared(other) {

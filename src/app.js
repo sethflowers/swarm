@@ -15,11 +15,16 @@ class App {
     this.context.fillRect(0, 0, this.width, this.height);
     this.context.fillStyle = 'black';
 
-    let bugSize = 4;
+    let bugSize = 3;
 
+    let boundingWidth = this.width / 2;
+    let boundingHeight = this.height / 2;
+    let translateX = this.width / 4;
+    let translateY = this.height / 4;
+    
     this.swarm.bugs.forEach((bug) => {
-      let x = bug.x * this.width;
-      let y = bug.y * this.height;
+      let x = (bug.x * boundingWidth) + translateX;
+      let y = (bug.y * boundingHeight) + translateY;
       this.context.fillRect(x, y, bugSize, bugSize);
     });
   }

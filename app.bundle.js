@@ -57,7 +57,7 @@
 	  var context = canvas.getContext('2d');
 	  var width = document.body.clientWidth;
 	  var height = document.body.clientHeight;
-	  var swarmSize = 100;
+	  var swarmSize = 300;
 	  var runner = new _App2.default(canvas, context, width, height, swarmSize);
 
 	  var pump = function pump() {
@@ -113,11 +113,16 @@
 	      this.context.fillRect(0, 0, this.width, this.height);
 	      this.context.fillStyle = 'black';
 
-	      var bugSize = 4;
+	      var bugSize = 3;
+
+	      var boundingWidth = this.width / 2;
+	      var boundingHeight = this.height / 2;
+	      var translateX = this.width / 4;
+	      var translateY = this.height / 4;
 
 	      this.swarm.bugs.forEach(function (bug) {
-	        var x = bug.x * _this.width;
-	        var y = bug.y * _this.height;
+	        var x = bug.x * boundingWidth + translateX;
+	        var y = bug.y * boundingHeight + translateY;
 	        _this.context.fillRect(x, y, bugSize, bugSize);
 	      });
 	    }
@@ -240,23 +245,28 @@
 	  }, {
 	    key: "step",
 	    value: function step() {
-	      if (Math.random() < .01) {
+	      if (Math.random() < .1) {
 	        this.findLeader();
 	      }
 
-	      var delta = .001;
+	      var delta = .00005;
 	      this.deltaX += this.x < this.leader.x ? delta : -delta;
 	      this.deltaY += this.y < this.leader.y ? delta : -delta;
 
-	      var maxDelta = .01;
+	      var maxDelta = .003;
 	      this.deltaX = Math.min(maxDelta, Math.max(this.deltaX, -maxDelta));
 	      this.deltaY = Math.min(maxDelta, Math.max(this.deltaY, -maxDelta));
 
 	      this.x += this.deltaX;
 	      this.y += this.deltaY;
 
-	      this.x = this.x < 1 ? this.x : -this.x;
-	      this.y = this.y < 1 ? this.y : -this.y;
+	      if (this.x > 1 || this.x < 0) {
+	        this.deltaX = -this.deltaX;
+	      }
+
+	      if (this.y > 1 || this.y < 0) {
+	        this.deltaY = -this.deltaY;
+	      }
 	    }
 	  }, {
 	    key: "distanceToSquared",

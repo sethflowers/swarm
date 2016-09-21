@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let context = canvas.getContext('2d');
   let width = document.body.clientWidth;
   let height = document.body.clientHeight;
-  let swarmSize = 100;
+  let swarmSize = 300;
   let runner = new App(canvas, context, width, height, swarmSize);
   
   let pump = () => {
